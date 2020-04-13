@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <h:form>
+            <h1>Cadastro de Cliente</h1>
+            <br/>
+            <h:panelGrid columns="2">    
+                id:
+                <h:inputText id="iTextId" size="3" readonly="true" value="#{clienteMBean.cliente.id}"/>
+                Nome
+                <h:inputText id="iTextNome" size="50" value="#{clienteMBean.cliente.nome}" />
+
+                CPF
+                <h:panelGroup>    
+                    <h:inputText id="iTextCpf" size="15" value="#{clienteMBean.cliente.cpf}"/>
+                    R.G
+                    <h:inputText id="iTextRG"  size="15" value="#{clienteMBean.cliente.rg}"/>
+                </h:panelGroup>
+
+                Data de Naci.
+                <h:inputText id="iTextDatadeNacimento" size="10" value="#{clienteMBean.cliente.dataNacimento}"/>
+                E-Mail
+                <h:inputText id="iTextEmail" size="50" value="#{clienteMBean.cliente.email}"/>
+                Telefone
+                <h:inputText id="iTextTelefone" size="15" value="#{clienteMBean.cliente.telefone}"/>
+                Cidade
+                <h:selectOneMenu>
+                    <f:selectItem itemLabel="SÂO LUIS DE MONTES BELOS"/>
+                    <f:selectItem itemLabel="FIRMINOPOLIS"/>
+                </h:selectOneMenu>
+                Bairro
+                <h:inputText id="iTextBairro" size="15" value="#{clienteMBean.cliente.bairro}"/>
+                Numero
+                <h:inputText id="iTextNumero" size="15" value="#{clienteMBean.cliente.numero}"/>
+                Cep
+                <h:inputText id="iTextCep" size="15" value="#{clienteMBean.cliente.cep}"/>
+                
+                   
+
+               
+
+
+            </h:panelGrid>
+            <h:panelGrid columns="2">
+                <h:commandButton value="Salvar" action="#{clienteMBean.botaoSalvar()}"/>
+                <h:commandButton value="Pesquisar" action="consCliente?faces-redirect=true" />
+            </h:panelGrid>
+
+
+
+
+
+
+
+        </h:form>
+    </ui:define>
+
+</ui:composition>

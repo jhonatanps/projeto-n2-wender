@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <h:form>
+            <h1>Cadastro de Produtos</h1>
+            <br/>
+            <h:panelGrid columns="2">    
+                id:
+                <h:inputText id="iTextId" size="3" readonly="true" value="#{produtoMBean.produto.id}"/>
+                Nome
+                <h:inputText id="iTextNome" size="50" value="#{produtoMBean.produto.nome}" />
+
+                Uni. de Medida
+                <h:selectOneMenu id="sMnUnidadeMedida" value="#{produtoMBean.produto.uniMedida}">
+                    <f:selectItems value="#{produtoMBean.listaUnidadeMedida}" var="unidadeMedida" itemValue="#{unidadeMedida.unidadeMedida}" itemLabel="#{unidadeMedida.unidadeMedida}"/>
+                </h:selectOneMenu>
+
+                Quantidade Est.
+                <h:inputText id="iTextQtdeest" size="10" value="#{produtoMBean.produto.qtdeEstoque}"/>
+
+                Preço de comp.
+                <h:inputText id="iTextPdecompra"  size="10" value="#{produtoMBean.produto.precoCompra}"/>
+                Preço de venda.
+                <h:inputText id="iTextPdevenda"  size="10" value="#{produtoMBean.produto.precoVenda}"/>
+
+                Margem %
+                <h:inputText id="iTextMargem" size="10" value="#{produtoMBean.produto.margem}"/>
+                Codigo de barras
+                <h:inputText id="iTextCodigodebarras" size="15" value="#{produtoMBean.produto.codBarras}"/>
+
+
+
+
+
+            </h:panelGrid>
+            <h:panelGrid columns="2">
+                <h:commandButton value="Salvar" action="#{produtoMBean.botaoSalvar}"/>
+                <h:commandButton value="Pesquisar" action="consProdutos?faces-redirect=true" />
+            </h:panelGrid>
+
+
+
+
+
+
+
+        </h:form>
+    </ui:define>
+
+</ui:composition>
