@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+
+        <h:form>
+
+            <h:panelGrid>
+                <h:commandButton value="Nova Cidade" action="cadcidade?faces-redirect=true"/>
+            </h:panelGrid>
+            <h:panelGrid columns="3">                
+                Nome
+                <h:inputText size="20" value="#{cidadeMBean.valorPesquisar}"/>
+                <h:commandButton value="Pesquisar" action="#{cidadeMBean.botaoPesquisar()}"/>
+            </h:panelGrid>
+
+            <h:panelGrid>
+
+                <h:dataTable value = "#{cidadeMBean.listaCidade}" var = "cidade"
+                             styleClass = "tabela"
+                             headerClass = "tabelacabecalho"
+                             columnClasses="tabelaColunaId, tabelaColuna250px,tabelaColuna100px,tabelaColuna100px,tabelaColuna150px,tabelaColuna100px,tabelaColuna150px,tabelaColuna250px,tabelaColuna100px,tabelaColuna150px,tabelaColuna150px,tabelaColuna150px"
+                             rowClasses = "">
+                    <h:column>    				
+                        <f:facet name = "header">ID</f:facet>    				
+                            #{cidade.id}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name = "header">Cidade</f:facet>
+                            #{cidade.nomeCidade}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name = "header">Estado</f:facet>
+                            #{cidade.estado}
+                    </h:column>
+                    
+                     <h:column>
+                        <f:facet name = "header">Cep</f:facet>
+                            #{cidade.cep}
+                    </h:column>
+
+
+                    <h:column>
+                         <f:facet name = "header">Ações</f:facet>
+                         <h:commandButton value="Editar" action="#{cidadeMBean.botaoEditar()}">
+                        <f:setPropertyActionListener value="#{cidade}" target="#{cidadeMBean.cidade}"/>
+                        </h:commandButton>
+                         <h:commandButton value="Apagar" action="#{cidadeMBean.botaoExcluir()}">
+                        <f:setPropertyActionListener value="#{cidade}" target="#{cidadeMBean.cidade}"/>
+                        </h:commandButton>
+                    </h:column>
+                </h:dataTable>
+            </h:panelGrid>
+
+        </h:form>
+    </ui:define>
+
+</ui:composition>

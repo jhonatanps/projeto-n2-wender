@@ -5,21 +5,44 @@
  */
 package model.entidades;
 
+import java.io.Serializable;
+import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import uteis.UnidadeMedida;
 
-/**
- *
- * @author Cirim
- */
-public class Produto {
+@Entity
+@Table(name = "produto", schema = "sige")
+@NamedQueries({
+    @NamedQuery(
+            name = "Produto.findByName",
+            query = "SELECT p FROM Produto p WHERE p.nome LIKE :nome"
+)
+})
+public class Produto implements Serializable{
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "nome", length = 255, nullable = false)
     private String nome;
+    @Column(name = "uniMedida", length = 10, nullable = false )
     private UnidadeMedida uniMedida;
+    @Column(name = "qtdeEstoque")
     private int qtdeEstoque;
+    @Column(name = "precoCompra")
     private double precoCompra;
+    @Column(name = "precoVenda")
     private double precoVenda;
+    @Column(name = "margem")
     private double margem;
+    @Column(name = "codBarras")
     private int codBarras;
 
     public Produto() {
@@ -87,6 +110,31 @@ public class Produto {
 
     public void setCodBarras(int codBarras) {
         this.codBarras = codBarras;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 97 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Produto other = (Produto) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
     }
     
     

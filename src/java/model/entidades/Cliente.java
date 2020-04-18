@@ -5,22 +5,50 @@
  */
 package model.entidades;
 
-/**
- *
- * @author Cirim
- */
-public class Cliente {
+import java.io.Serializable;
+import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "cliente", schema = "sige")
+@NamedQueries({
+    @NamedQuery(
+            name = "Cliente.findByName",
+            query = "SELECT c FROM Cliente c WHERE c.nome LIKE :nome"
+    )
+  
+})
+public class Cliente implements Serializable{
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "nome", length = 255, nullable = false)
     private String nome;
+    @Column(name = "cpf", length = 14, nullable = false)
     private String cpf;
+    @Column(name = "rg", length = 7, nullable = false)
     private String rg;
+    @Column(name = "dataNacimento", length = 10)
     private String dataNacimento;
+    @Column(name = "email", length = 150)
     private String email;
+    @Column(name = "telefone", length = 20)
     private String telefone;
+    
     private String cidade;
+    @Column(name = "bairro", length = 50)
     private String bairro;
+    @Column(name = "numero", length = 10)
     private String numero;
+    @Column(name = "cep")
     private String cep;
 
     public Cliente() {
@@ -112,6 +140,31 @@ public class Cliente {
 
     public void setDataNacimento(String dataNacimento) {
         this.dataNacimento = dataNacimento;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Cliente other = (Cliente) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
     }
     
     

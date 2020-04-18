@@ -14,8 +14,8 @@
             </h:panelGrid>
             <h:panelGrid columns="3">                
                 Nome
-                <h:inputText size="20"/>
-                <h:commandButton value="Pesquisar"/>
+                <h:inputText size="20" value="#{clienteMBean.valorPesquisar}"/>
+                <h:commandButton value="Pesquisar" action="#{clienteMBean.botaoPesquisar()}"/>
             </h:panelGrid>
 
             <h:panelGrid>
@@ -82,8 +82,12 @@
 
                     <h:column>
                         <f:facet name = "header">Ações</f:facet>
-                        <h:commandButton value="Editar"/>
-                        <h:commandButton value="Apagar"/>
+                        <h:commandButton value="Editar" action="#{clienteMBean.botaoEditar()}">
+                            <f:setPropertyActionListener value="#{cliente}" target="#{clienteMBean.cliente}"/>
+                        </h:commandButton>
+                        <h:commandButton value="Apagar" action="#{clienteMBean.botaoExcluir()}">
+                            <f:setPropertyActionListener value="#{cliente}" target="#{clienteMBean.cliente}"/>
+                        </h:commandButton>
                     </h:column>
                 </h:dataTable>
             </h:panelGrid>

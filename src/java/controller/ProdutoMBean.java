@@ -10,9 +10,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import model.entidades.Produto;
+import model.sessionbean.ProdutoSBean;
 import uteis.UnidadeMedida;
 
 /**
@@ -24,6 +26,8 @@ import uteis.UnidadeMedida;
 public class ProdutoMBean implements Serializable{
 
 
+@EJB
+private ProdutoSBean produtoSBean;
 
    
     public  ProdutoMBean() {
@@ -45,22 +49,22 @@ public class ProdutoMBean implements Serializable{
         listaUnidadeMedida = Arrays.asList(UnidadeMedida.values());
     }
      public String botaoSalvar() {
-        listaProduto.add(produto);
+         produtoSBean.salvar(produto);
         produto = new Produto();
         return "consProdutos?faces-redirect=true";
     }
 
     
     public void botaoPesquisar() {
-        
+       listaProduto = produtoSBean.pesquisar(valorPesquisar);
     }
     
     public void botaoExcluir() {
-        
+        produtoSBean.excluir(produto);
     }
     
-    public void botaoEditar() {
-        
+    public String botaoEditar() {
+       return "cadprodutos?faces-redirect=true";  
     }
 
     public Produto getProduto() {

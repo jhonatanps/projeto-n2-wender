@@ -11,7 +11,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import model.entidades.Usuario;
+import model.sessionbean.UsuarioSBean;
 
 /**
  *
@@ -21,9 +23,9 @@ import model.entidades.Usuario;
 @SessionScoped
 public class UsuarioMBean implements Serializable {
 
-    /**
-     * Creates a new instance of UsuarioMBean
-     */
+    @EJB
+    private UsuarioSBean usuarioSBean;
+
     public UsuarioMBean() {
     }
 
@@ -40,18 +42,20 @@ public class UsuarioMBean implements Serializable {
     }
 
     public void botaoPesquisar() {
-
+        listaUsuario = usuarioSBean.pesquisar(valorPesquisar);
     }
 
     public void botaoExcluir() {
-
+        usuarioSBean.excluir(usuario);
     }
 
-    public void botaoEditar() {
+    public String botaoEditar() {
 
+        return "cadUsuario?faces-redirect=true";
     }
+
     public String botaoSalvar() {
-        listaUsuario.add(usuario);
+        usuarioSBean.salvar(usuario);
         usuario = new Usuario();
         return "consUsuario?faces-redirect=true";
     }
@@ -79,6 +83,5 @@ public class UsuarioMBean implements Serializable {
     public void setValorPesquisar(String valorPesquisar) {
         this.valorPesquisar = valorPesquisar;
     }
-
 
 }

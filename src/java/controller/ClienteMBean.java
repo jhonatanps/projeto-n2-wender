@@ -5,13 +5,16 @@
  */
 package controller;
 
+import javax.inject.Named;
+import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
+import javax.ejb.EJB;
 import model.entidades.Cliente;
+import model.sessionbean.ClienteSBean;
+
 
 /**
  *
@@ -19,46 +22,52 @@ import model.entidades.Cliente;
  */
 @Named(value = "clienteMBean")
 @SessionScoped
-public class ClienteMBean implements Serializable{
+public class ClienteMBean implements Serializable {
 
-    
+    @EJB
+    private ClienteSBean clienteSBean;
 
-    /**
-     * Creates a new instance of ClienteMBean
-     */
     public ClienteMBean() {
     }
-    
-   
-    
+
     private Cliente cliente;
     private List<Cliente> listaCliente;
-    
+
     private String valorPesquisar;
-    
+
     @PostConstruct
-    public void init(){
+    public void init() {
         this.cliente = new Cliente();
         this.listaCliente = new ArrayList<>();
-                
+
     }
 
-    
     public void botaoPesquisar() {
-        
+       listaCliente = clienteSBean.pesquisar(valorPesquisar);
     }
-    
+
     public void botaoExcluir() {
-        
+       clienteSBean.excluir(cliente);
     }
-    
-    public void botaoEditar() {
-        
+
+    public String botaoEditar() {
+
+        return "cadcliente?faces-redirect=true";
     }
-     public String botaoSalvar() {
-        this.listaCliente.add(cliente);
-        this.cliente = new Cliente();
+
+    public String botaoSalvar() {
+        
+        cliente = new Cliente();
         return "consCliente?faces-redirect=true";
+    }
+
+
+    public ClienteSBean getClienteSBean() {
+        return clienteSBean;
+    }
+
+    public void setClienteSBean(ClienteSBean clienteSBean) {
+        this.clienteSBean = clienteSBean;
     }
 
     public Cliente getCliente() {
@@ -84,5 +93,7 @@ public class ClienteMBean implements Serializable{
     public void setValorPesquisar(String valorPesquisar) {
         this.valorPesquisar = valorPesquisar;
     }
-    
+
+
+
 }
