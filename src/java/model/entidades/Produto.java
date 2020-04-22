@@ -12,10 +12,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import uteis.UnidadeMedida;
+
 
 @Entity
 @Table(name = "produto", schema = "sige")
@@ -32,8 +34,9 @@ public class Produto implements Serializable{
     private Long id;
     @Column(name = "nome", length = 255, nullable = false)
     private String nome;
-    @Column(name = "uniMedida", length = 10, nullable = false )
-    private UnidadeMedida uniMedida;
+    @ManyToOne
+    @JoinColumn(name = "unidade_Medida_id", referencedColumnName = "id")
+    private UnidadeMedida unidadeMedida;
     @Column(name = "qtdeEstoque")
     private int qtdeEstoque;
     @Column(name = "precoCompra")
@@ -64,12 +67,12 @@ public class Produto implements Serializable{
         this.nome = nome;
     }
 
-    public UnidadeMedida getUniMedida() {
-        return uniMedida;
+    public UnidadeMedida getUnidadeMedida() {
+        return unidadeMedida;
     }
 
-    public void setUniMedida(UnidadeMedida uniMedida) {
-        this.uniMedida = uniMedida;
+    public void setUnidadeMedida(UnidadeMedida unidadeMedida) {
+        this.unidadeMedida = unidadeMedida;
     }
 
     public int getQtdeEstoque() {

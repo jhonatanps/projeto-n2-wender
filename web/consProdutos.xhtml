@@ -10,7 +10,7 @@
         <h:form>
             
             <h:panelGrid>
-                <h:commandButton value="Novo Produto" action="cadprodutos?faces-redirect=true"/>
+                <h:commandButton value="Novo Produto" action="#{produtoMBean.botaoNovo()}"/>
             </h:panelGrid>
             <h:panelGrid columns="3">                
                 Nome
@@ -37,7 +37,7 @@
 
                     <h:column>
                         <f:facet name = "header">Uni Medida</f:facet>
-                            #{produto.uniMedida}
+                            #{produto.unidadeMedida.nome}
                     </h:column>
 
                     <h:column>

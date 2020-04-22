@@ -51,7 +51,7 @@ public class UsuarioMBean implements Serializable {
 
     public String botaoEditar() {
 
-        return "cadUsuario?faces-redirect=true";
+        return "cadusuario?faces-redirect=true";
     }
 
     public String botaoSalvar() {

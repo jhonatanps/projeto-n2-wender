@@ -16,8 +16,9 @@
                 <h:inputText id="iTextNome" size="50" value="#{produtoMBean.produto.nome}" />
 
                 Uni. de Medida
-                <h:selectOneMenu id="sMnUnidadeMedida" value="#{produtoMBean.produto.uniMedida}">
-                    <f:selectItems value="#{produtoMBean.listaUnidadeMedida}" var="unidadeMedida" itemValue="#{unidadeMedida.unidadeMedida}" itemLabel="#{unidadeMedida.unidadeMedida}"/>
+                <h:selectOneMenu id="sMnUnidadeMedida" value="#{produtoMBean.produto.unidadeMedida}" converter="#{produtoMBean.unidadeMedidaConverter}">
+                    <f:selectItems value="#{produtoMBean.listaUnidadeMedida}" var="unidadeMedida"
+                                   itemValue="#{unidadeMedida}" itemLabel="#{unidadeMedida.nome}"/>
                 </h:selectOneMenu>
 
                 Quantidade Est.

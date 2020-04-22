@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <h:form>
+            <h1>Cadastro Unidade de Medida</h1>
+            <br/>
+            <h:panelGrid columns="2">    
+                id:
+                <h:inputText id="iTextId" size="3" readonly="true" value="#{unidadeMedidaMbean.unidadeMedida.id}"/>
+                Unidade de M.
+                <h:inputText id="iTextCidade" size="15" value="#{unidadeMedidaMbean.unidadeMedida.nome}"/>
+                Sigla
+                <h:inputText id="iTextEstado" size="15" value="#{unidadeMedidaMbean.unidadeMedida.simbolo}"/>
+               
+            </h:panelGrid>
+            <h:panelGrid columns="2">
+                <h:commandButton value="Salvar" action="#{unidadeMedidaMbean.botaoSalvar()}"/>
+                <h:commandButton value="Pesquisar" action="consUnidadeMedida?faces-redirect=true" />
+            </h:panelGrid>
+
+
+
+
+
+
+
+        </h:form>
+    </ui:define>
+
+</ui:composition>

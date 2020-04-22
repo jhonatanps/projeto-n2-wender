@@ -7,15 +7,17 @@ package controller;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import model.entidades.Produto;
+import model.entidades.UnidadeMedida;
 import model.sessionbean.ProdutoSBean;
-import uteis.UnidadeMedida;
+import model.sessionbean.UnidadeMedidaSBean;
+import uteis.jsf.UnidadeMedidaConverter;
+
 
 /**
  *
@@ -23,48 +25,60 @@ import uteis.UnidadeMedida;
  */
 @Named(value = "produtoMBean")
 @SessionScoped
-public class ProdutoMBean implements Serializable{
+public class ProdutoMBean implements Serializable {
 
+    @EJB
+    private ProdutoSBean produtoSBean;
+    @EJB
+    private UnidadeMedidaSBean unidadeMedidaSBean;
 
-@EJB
-private ProdutoSBean produtoSBean;
-
-   
-    public  ProdutoMBean() {
+    public ProdutoMBean() {
     }
-    
-  
-    
+
     private Produto produto;
+    private String valorPesquisar;
     private List<Produto> listaProduto;
     private List<UnidadeMedida> listaUnidadeMedida;
     
-    private String valorPesquisar;
-    
-    
+    private UnidadeMedidaConverter unidadeMedidaConverter;
+
+
     @PostConstruct
-    public void init(){
+    public void init() {
+        valorPesquisar = "";
         this.produto = new Produto();
         this.listaProduto = new ArrayList<>();
-        listaUnidadeMedida = Arrays.asList(UnidadeMedida.values());
+        this.inicioFormularioCadastro();
+        
     }
-     public String botaoSalvar() {
-         produtoSBean.salvar(produto);
-        produto = new Produto();
-        return "consProdutos?faces-redirect=true";
+    private void inicioFormularioCadastro(){
+        listaUnidadeMedida = unidadeMedidaSBean.pesquisar("");
+        unidadeMedidaConverter = new UnidadeMedidaConverter();
+        unidadeMedidaConverter.setUnidadeMedidaSBean(unidadeMedidaSBean);
     }
 
-    
-    public void botaoPesquisar() {
-       listaProduto = produtoSBean.pesquisar(valorPesquisar);
+    public String botaoSalvar() {
+        produtoSBean.salvar(produto);
+        produto = new Produto();
+        this.inicioFormularioCadastro();
+        return "consProdutos?faces-redirect=true";
     }
-    
+    public String botaoNovo(){
+        inicioFormularioCadastro();
+        return "cadprodutos?faces-redirect=true";
+    }
+
+    public void botaoPesquisar() {
+        listaProduto = produtoSBean.pesquisar(valorPesquisar);
+    }
+
     public void botaoExcluir() {
         produtoSBean.excluir(produto);
     }
-    
+
     public String botaoEditar() {
-       return "cadprodutos?faces-redirect=true";  
+        this.inicioFormularioCadastro();
+        return "cadprodutos?faces-redirect=true";
     }
 
     public Produto getProduto() {
@@ -91,6 +105,22 @@ private ProdutoSBean produtoSBean;
         this.valorPesquisar = valorPesquisar;
     }
 
+    public ProdutoSBean getProdutoSBean() {
+        return produtoSBean;
+    }
+
+    public void setProdutoSBean(ProdutoSBean produtoSBean) {
+        this.produtoSBean = produtoSBean;
+    }
+
+    public UnidadeMedidaSBean getUnidadeMedidaSBean() {
+        return unidadeMedidaSBean;
+    }
+
+    public void setUnidadeMedidaSBean(UnidadeMedidaSBean unidadeMedidaSBean) {
+        this.unidadeMedidaSBean = unidadeMedidaSBean;
+    }
+
     public List<UnidadeMedida> getListaUnidadeMedida() {
         return listaUnidadeMedida;
     }
@@ -98,6 +128,14 @@ private ProdutoSBean produtoSBean;
     public void setListaUnidadeMedida(List<UnidadeMedida> listaUnidadeMedida) {
         this.listaUnidadeMedida = listaUnidadeMedida;
     }
-    
-    
+
+
+    public UnidadeMedidaConverter getUnidadeMedidaConverter() {
+        return unidadeMedidaConverter;
+    }
+
+    public void setUnidadeMedidaConverter(UnidadeMedidaConverter unidadeMedidaConverter) {
+        this.unidadeMedidaConverter = unidadeMedidaConverter;
+    }
+
 }
