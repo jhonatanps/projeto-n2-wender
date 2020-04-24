@@ -6,15 +6,21 @@
 package model.entidades;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "cliente", schema = "sige")
@@ -34,16 +40,18 @@ public class Cliente implements Serializable{
     private String nome;
     @Column(name = "cpf", length = 14, nullable = false)
     private String cpf;
-    @Column(name = "rg", length = 7, nullable = false)
+    @Column(name = "rg", length = 15, nullable = false)
     private String rg;
-    @Column(name = "dataNacimento", length = 10)
-    private String dataNacimento;
+    @Column(name = "data_nacimento")
+    @Temporal(TemporalType.DATE)
+    private Date dataNacimento;
     @Column(name = "email", length = 150)
     private String email;
     @Column(name = "telefone", length = 20)
     private String telefone;
-    
-    private String cidade;
+    @ManyToOne
+    @JoinColumn(name = "nome_cidade_id", referencedColumnName = "id" )
+    private Cidade cidade;
     @Column(name = "bairro", length = 50)
     private String bairro;
     @Column(name = "numero", length = 10)
@@ -102,11 +110,11 @@ public class Cliente implements Serializable{
         this.telefone = telefone;
     }
 
-    public String getCidade() {
+    public Cidade getCidade() {
         return cidade;
     }
 
-    public void setCidade(String cidade) {
+    public void setCidade(Cidade cidade) {
         this.cidade = cidade;
     }
 
@@ -134,11 +142,11 @@ public class Cliente implements Serializable{
         this.cep = cep;
     }
 
-    public String getDataNacimento() {
+    public Date getDataNacimento() {
         return dataNacimento;
     }
 
-    public void setDataNacimento(String dataNacimento) {
+    public void setDataNacimento(Date dataNacimento) {
         this.dataNacimento = dataNacimento;
     }
 

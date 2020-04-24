@@ -12,8 +12,12 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import model.entidades.Cidade;
 import model.entidades.Cliente;
+import model.sessionbean.CidadeSBean;
 import model.sessionbean.ClienteSBean;
+import uteis.jsf.CidadeConverter;
+
 
 
 /**
@@ -26,20 +30,37 @@ public class ClienteMBean implements Serializable {
 
     @EJB
     private ClienteSBean clienteSBean;
+    @EJB
+    private CidadeSBean cidadeSBean;
 
     public ClienteMBean() {
     }
 
     private Cliente cliente;
     private List<Cliente> listaCliente;
+    
+    private List<Cidade> listaCidade;
 
     private String valorPesquisar;
 
+    private CidadeConverter cidadeConverter;
+    
     @PostConstruct
     public void init() {
+        valorPesquisar = "";
         this.cliente = new Cliente();
         this.listaCliente = new ArrayList<>();
+        this.inicioFormularioCadastro();
 
+    }
+    private void inicioFormularioCadastro(){
+        listaCidade = cidadeSBean.pesquisar("");
+        cidadeConverter = new CidadeConverter();
+        cidadeConverter.setCidadeSBean(cidadeSBean);
+    }
+     public String botaoNovo(){
+        inicioFormularioCadastro();
+        return "cadcliente?faces-redirect=true";
     }
 
     public void botaoPesquisar() {
@@ -56,7 +77,8 @@ public class ClienteMBean implements Serializable {
     }
 
     public String botaoSalvar() {
-        
+        System.out.println("salvar cliente" + cliente.getNome());
+        this.clienteSBean.salvar(cliente);
         cliente = new Cliente();
         return "consCliente?faces-redirect=true";
     }
@@ -92,6 +114,30 @@ public class ClienteMBean implements Serializable {
 
     public void setValorPesquisar(String valorPesquisar) {
         this.valorPesquisar = valorPesquisar;
+    }
+
+    public CidadeSBean getCidadeSBean() {
+        return cidadeSBean;
+    }
+
+    public void setCidadeSBean(CidadeSBean cidadeSBean) {
+        this.cidadeSBean = cidadeSBean;
+    }
+
+    public CidadeConverter getCidadeConverter() {
+        return cidadeConverter;
+    }
+
+    public void setCidadeConverter(CidadeConverter cidadeConverter) {
+        this.cidadeConverter = cidadeConverter;
+    }
+
+    public List<Cidade> getListaCidade() {
+        return listaCidade;
+    }
+
+    public void setListaCidade(List<Cidade> listaCidade) {
+        this.listaCidade = listaCidade;
     }
 
 

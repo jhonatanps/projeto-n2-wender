@@ -9,18 +9,19 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
-import model.entidades.UnidadeMedida;
-import model.sessionbean.UnidadeMedidaSBean;
+import model.entidades.Cidade;
+import model.sessionbean.CidadeSBean;
+
 
 /**
  *
  * @author Cirim
  */
-@FacesConverter("unidadeMedidaConverter")
-public class UnidadeMedidaConverter implements Converter{
+@FacesConverter("cidadeConverter")
+public class CidadeConverter implements Converter{
 
-    private UnidadeMedidaSBean unidadeMedidaSBean;
-    private UnidadeMedida unidadeMedida = null;  
+    private CidadeSBean cidadeSBean;
+    private Cidade cidade = null;  
     
 
     @Override
@@ -28,25 +29,35 @@ public class UnidadeMedidaConverter implements Converter{
         
         if (value != null && value.trim().length() > 0){
             Long id = Long.parseLong(value);
-            unidadeMedida = unidadeMedidaSBean.pesquisar(id);
+            cidade = cidadeSBean.pesquisar(id);
         }
-        return unidadeMedida;
+        return cidade;
     }
 
     @Override
     public String getAsString(FacesContext arg0, UIComponent arg1, Object value) {
         
         if(value != null){
-            unidadeMedida = (UnidadeMedida) value;
-            return unidadeMedida.getId().toString();
+            cidade = (Cidade) value;
+            return cidade.getId().toString();
         }
     return null;
     }
-    public UnidadeMedidaSBean getUnidadeMedidaSBean() {
-        return unidadeMedidaSBean;
+
+    public CidadeSBean getCidadeSBean() {
+        return cidadeSBean;
     }
 
-    public void setUnidadeMedidaSBean(UnidadeMedidaSBean unidadeMedidaSBean) {
-        this.unidadeMedidaSBean = unidadeMedidaSBean;
+    public void setCidadeSBean(CidadeSBean cidadeSBean) {
+        this.cidadeSBean = cidadeSBean;
     }
+
+    public Cidade getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(Cidade cidade) {
+        this.cidade = cidade;
+    }
+ 
 }

@@ -3,12 +3,14 @@
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./template.xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:f="http://xmlns.jcp.org/jsf/core">
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns="http://www.w3.org/1999/xhtml">
 
     <ui:define name="content">
         <h:form>
             <h1>Cadastro de Cliente</h1>
             <br/>
+            <h:messages/>
             <h:panelGrid columns="2">    
                 id:
                 <h:inputText id="iTextId" size="3" readonly="true" value="#{clienteMBean.cliente.id}"/>
@@ -23,15 +25,18 @@
                 </h:panelGroup>
 
                 Data de Naci.
-                <h:inputText id="iTextDatadeNacimento" size="10" value="#{clienteMBean.cliente.dataNacimento}"/>
+                <h:inputText id="iTextDatadeNacimento" size="10" value="#{clienteMBean.cliente.dataNacimento}">
+                    <f:convertDateTime locale="pt_BR" parent="dd/MM/yyyy"/>
+                </h:inputText>
                 E-Mail
                 <h:inputText id="iTextEmail" size="50" value="#{clienteMBean.cliente.email}"/>
                 Telefone
                 <h:inputText id="iTextTelefone" size="15" value="#{clienteMBean.cliente.telefone}"/>
                 Cidade
-                <h:selectOneMenu>
-                    <f:selectItem itemLabel="SÂO LUIS DE MONTES BELOS"/>
-                    <f:selectItem itemLabel="FIRMINOPOLIS"/>
+                <h:selectOneMenu id="sMnCidade" value="#{clienteMBean.cliente.cidade}" 
+                                 converter="#{clienteMBean.cidadeConverter}">
+                    <f:selectItems value="#{clienteMBean.listaCidade}" var="cidade"
+                                   itemValue="#{cidade}" itemLabel="#{cidade.nomeCidade}"/>
                 </h:selectOneMenu>
                 Bairro
                 <h:inputText id="iTextBairro" size="15" value="#{clienteMBean.cliente.bairro}"/>
