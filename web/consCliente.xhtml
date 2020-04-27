@@ -11,10 +11,10 @@
         <h:form>
 
             <h:panelGrid>
-                <h:commandButton value="Novo Cliente" action="cadcliente?faces-redirect=true"/>
+                <h:commandButton value="Novo Cliente" action="#{clienteMBean.botaoNovo()}"/>
             </h:panelGrid>
             <h:panelGrid columns="3">                
-                Nome
+                Nome:
                 <h:inputText size="20" value="#{clienteMBean.valorPesquisar}"/>
                 <h:commandButton value="Pesquisar" action="#{clienteMBean.botaoPesquisar()}"/>
             </h:panelGrid>

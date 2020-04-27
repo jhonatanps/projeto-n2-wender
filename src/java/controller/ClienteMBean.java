@@ -47,10 +47,10 @@ public class ClienteMBean implements Serializable {
     
     @PostConstruct
     public void init() {
+        this.inicioFormularioCadastro();
         valorPesquisar = "";
         this.cliente = new Cliente();
         this.listaCliente = new ArrayList<>();
-        this.inicioFormularioCadastro();
 
     }
     private void inicioFormularioCadastro(){
