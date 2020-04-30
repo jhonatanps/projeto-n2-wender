@@ -23,7 +23,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "cliente", schema = "sige")
+@Table(name = "cliente", schema = "sigebootstrap")
 @NamedQueries({
     @NamedQuery(
             name = "Cliente.findByName",

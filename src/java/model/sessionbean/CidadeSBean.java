@@ -19,7 +19,7 @@ import model.entidades.Cidade;
 @Stateless
 public class CidadeSBean {
 
-    @PersistenceContext(unitName = "sigePU")
+    @PersistenceContext(unitName = "Sige-bootstrapPU")
     EntityManager em;
     
     public void salvar(Cidade cidade){

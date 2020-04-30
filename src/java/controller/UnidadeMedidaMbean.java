@@ -65,6 +65,7 @@ public class UnidadeMedidaMbean implements Serializable {
     public void botaoExcluir() {
         unidadeMedidaSBean.excluir(unidadeMedida);
         unidadeMedida = new UnidadeMedida();
+        listaUnidadeMedidas.remove(unidadeMedida);
     }
 
     public UnidadeMedida getUnidadeMedida() {

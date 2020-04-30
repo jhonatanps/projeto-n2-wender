@@ -20,7 +20,7 @@ import model.entidades.Produto;
 @Stateless
 public class ProdutoSBean {
 
-    @PersistenceContext(unitName = "sigePU")
+    @PersistenceContext(unitName = "Sige-bootstrapPU")
     EntityManager em;
     
     public void salvar(Produto produto){

@@ -10,19 +10,21 @@
         <h:form>
             <h1>Cadastro de Cidade</h1>
             <br/>
-            <h:panelGrid columns="2">    
-                id:
-                <h:inputText id="iTextId" size="3" readonly="true" value="#{cidadeMBean.cidade.id}"/>
-                Cidade
-                <h:inputText id="iTextCidade" size="15" value="#{cidadeMBean.cidade.nomeCidade}"/>
-                Estado
-                <h:inputText id="iTextEstado" size="15" value="#{cidadeMBean.cidade.estado}"/>
-                Cep
-                <h:inputText id="iTextCep" size="15" value="#{cidadeMBean.cidade.cep}"/>
+            <h:panelGrid columns="1"> 
+                <h:panelGrid columns="1">
+                <h1>Id</h1>
+                <h:inputText id="iTextId" class="form-control" size="3" readonly="true" value="#{cidadeMBean.cidade.id}"/>
+                </h:panelGrid>
+                <h1>Cidade</h1>
+                <h:inputText id="iTextCidade" class="form-control" size="15" value="#{cidadeMBean.cidade.nomeCidade}"/>
+                <h1>Estado</h1>
+                <h:inputText id="iTextEstado" class="form-control" size="15" value="#{cidadeMBean.cidade.estado}"/>
+                <h1>Cep</h1>
+                <h:inputText id="iTextCep" class="form-control" size="15" value="#{cidadeMBean.cidade.cep}"/>
             </h:panelGrid>
             <h:panelGrid columns="2">
-                <h:commandButton value="Salvar" action="#{cidadeMBean.botaoSalvar()}"/>
-                <h:commandButton value="Pesquisar" action="consCidade?faces-redirect=true" />
+                <h:commandButton value="Salvar" class="btn btn-primary btn-sm" action="#{cidadeMBean.botaoSalvar()}"/>
+                <h:commandButton value="Pesquisar" class="btn btn-primary btn-sm" action="consCidade?faces-redirect=true" />
             </h:panelGrid>
 
 

@@ -11,12 +11,12 @@
         <h:form>
 
             <h:panelGrid>
-                <h:commandButton value="Nova Unidade Medida" action="cadunidadeMedida?faces-redirect=true"/>
+                <h:commandButton value="Nova Unidade Medida" class="btn btn-primary btn-sm" action="cadunidadeMedida?faces-redirect=true"/>
             </h:panelGrid>
             <h:panelGrid columns="3">                
-                Nome
+                <h1>Nome</h1>
                 <h:inputText size="20" value="#{unidadeMedidaMbean.valorPesquisar}"/>
-                <h:commandButton value="Pesquisar" action="#{unidadeMedidaMbean.botaoPesquisar()}"/>
+                <h:commandButton value="Pesquisar" class="btn btn-primary btn-sm" action="#{unidadeMedidaMbean.botaoPesquisar()}"/>
             </h:panelGrid>
 
             <h:panelGrid>
@@ -46,12 +46,14 @@
 
                     <h:column>
                          <f:facet name = "header">Ações</f:facet>
-                         <h:commandButton value="Editar" action="#{unidadeMedidaMbean.botaoEditar()}">
+                         <h:panelGrid columns="2">
+                         <h:commandButton value="Editar" class="btn btn-primary btn-sm" action="#{unidadeMedidaMbean.botaoEditar()}">
                              <f:setPropertyActionListener value="#{unidademedida}" target="#{unidadeMedidaMbean.unidadeMedida}"/>
                         </h:commandButton>
-                         <h:commandButton value="Apagar" action="#{unidadeMedidaMbean.botaoExcluir()}">
+                         <h:commandButton value="Apagar" class="btn btn-primary btn-sm" action="#{unidadeMedidaMbean.botaoExcluir()}">
                              <f:setPropertyActionListener value="#{unidademedida}" target="#{unidadeMedidaMbean.unidadeMedida}"/>
                         </h:commandButton>
+                         </h:panelGrid>
                     </h:column>
                 </h:dataTable>
             </h:panelGrid>

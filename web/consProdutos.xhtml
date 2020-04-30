@@ -11,12 +11,12 @@
         <h:form>
             
             <h:panelGrid>
-                <h:commandButton value="Novo Produto" action="#{produtoMBean.botaoNovo()}"/>
+                <h:commandButton value="Novo Produto" class="btn btn-primary btn-sm" action="#{produtoMBean.botaoNovo()}"/>
             </h:panelGrid>
             <h:panelGrid columns="3">                
                 Nome
                 <h:inputText size="20" value="#{produtoMBean.valorPesquisar}"/>
-                <h:commandButton value="Pesquisar" action="#{produtoMBean.botaoPesquisar}"/>
+                <h:commandButton value="Pesquisar" class="btn btn-primary btn-sm" action="#{produtoMBean.botaoPesquisar}"/>
             </h:panelGrid>
             
             <h:panelGrid>
@@ -67,12 +67,14 @@
                     </h:column>
                     <h:column>
                         <f:facet name = "header">Ações</f:facet>
-                        <h:commandButton value="Editar" action="#{produtoMBean.botaoEditar()}">
+                        <h:panelGrid columns="2">
+                        <h:commandButton value="Editar" class="btn btn-primary btn-sm" action="#{produtoMBean.botaoEditar()}">
                             <f:setPropertyActionListener value="#{produto}" target="#{produtoMBean.produto}"/>
                         </h:commandButton>
-                        <h:commandButton value="Apagar" action="#{produtoMBean.botaoExcluir()}">
+                        <h:commandButton value="Apagar" class="btn btn-primary btn-sm" action="#{produtoMBean.botaoExcluir()}">
                             <f:setPropertyActionListener value="#{produto}" target="#{produtoMBean.produto}"/>
                         </h:commandButton>
+                        </h:panelGrid>
                     </h:column>
                 </h:dataTable>
             </h:panelGrid>

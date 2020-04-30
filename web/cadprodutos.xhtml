@@ -10,30 +10,34 @@
         <h:form>
             <h1>Cadastro de Produtos</h1>
             <br/>
-            <h:panelGrid columns="2">    
-                id:
-                <h:inputText id="iTextId" size="3" readonly="true" value="#{produtoMBean.produto.id}"/>
-                Nome
-                <h:inputText id="iTextNome" size="50" value="#{produtoMBean.produto.nome}" />
+            <h:panelGrid columns="1">  
+                <h:panelGrid columns="">
+                <h1>Id:</h1>
+                <h:inputText id="iTextId" size="3" class="form-control" readonly="true" value="#{produtoMBean.produto.id}"/>
+                </h:panelGrid>
+                <h1>Nome</h1>
+                <h:inputText id="iTextNome" size="50" class="form-control" value="#{produtoMBean.produto.nome}" />
 
-                Uni. de Medida
-                <h:selectOneMenu id="sMnUnidadeMedida" value="#{produtoMBean.produto.unidadeMedida}" converter="#{produtoMBean.unidadeMedidaConverter}">
+                <h:panelGrid columns="1">
+                <h1>Uni. de Medida</h1>
+                <h:selectOneMenu id="sMnUnidadeMedida" class="form-control" value="#{produtoMBean.produto.unidadeMedida}" converter="#{produtoMBean.unidadeMedidaConverter}">
                     <f:selectItems value="#{produtoMBean.listaUnidadeMedida}" var="unidadeMedida"
                                    itemValue="#{unidadeMedida}" itemLabel="#{unidadeMedida.nome}"/>
                 </h:selectOneMenu>
+                </h:panelGrid>
+                <h:panelGrid columns="1">    
+                    <h1> Quantidade Est.</h1>
+                <h:inputText id="iTextQtdeest" size="5" class="form-control" value="#{produtoMBean.produto.qtdeEstoque}"/>
 
-                Quantidade Est.
-                <h:inputText id="iTextQtdeest" size="10" value="#{produtoMBean.produto.qtdeEstoque}"/>
-
-                Preço de comp.
-                <h:inputText id="iTextPdecompra"  size="10" value="#{produtoMBean.produto.precoCompra}"/>
-                Preço de venda.
-                <h:inputText id="iTextPdevenda"  size="10" value="#{produtoMBean.produto.precoVenda}"/>
-
-                Margem %
-                <h:inputText id="iTextMargem" size="10" value="#{produtoMBean.produto.margem}"/>
-                Codigo de barras
-                <h:inputText id="iTextCodigodebarras" size="15" value="#{produtoMBean.produto.codBarras}"/>
+                <h1>Preço de comp.</h1>
+                <h:inputText id="iTextPdecompra"  size="5" class="form-control" value="#{produtoMBean.produto.precoCompra}"/>
+                <h1>Preço de venda.</h1>
+                <h:inputText id="iTextPdevenda"  size="5"  class="form-control" value="#{produtoMBean.produto.precoVenda}"/>
+                <h1>Margem %</h1>
+                <h:inputText id="iTextMargem" size="10" class="form-control"  value="#{produtoMBean.produto.margem}"/>
+                <h1>Codigo de barras</h1>
+                <h:inputText id="iTextCodigodebarras"  class="form-control" size="15" value="#{produtoMBean.produto.codBarras}"/>
+                </h:panelGrid>
 
 
 
@@ -41,8 +45,8 @@
 
             </h:panelGrid>
             <h:panelGrid columns="2">
-                <h:commandButton value="Salvar" action="#{produtoMBean.botaoSalvar}"/>
-                <h:commandButton value="Pesquisar" action="consProdutos?faces-redirect=true" />
+                <h:commandButton value="Salvar" class="btn btn-primary" action="#{produtoMBean.botaoSalvar}"/>
+                <h:commandButton value="Pesquisar" class="btn btn-primary" action="consProdutos?faces-redirect=true" />
             </h:panelGrid>
 
 

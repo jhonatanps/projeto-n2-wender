@@ -69,6 +69,7 @@ public class ClienteMBean implements Serializable {
 
     public void botaoExcluir() {
        clienteSBean.excluir(cliente);
+       listaCliente.remove(cliente);
     }
 
     public String botaoEditar() {

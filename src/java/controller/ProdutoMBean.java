@@ -74,6 +74,7 @@ public class ProdutoMBean implements Serializable {
 
     public void botaoExcluir() {
         produtoSBean.excluir(produto);
+        listaProduto.remove(produto);
     }
 
     public String botaoEditar() {

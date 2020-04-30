@@ -53,6 +53,7 @@ public class CidadeMBean implements Serializable{
     
     public void botaoExcluir() {
         cidadeSBean.excluir(cidade);
+        listaCidade.remove(cidade);
     }
     
     public String botaoEditar() {

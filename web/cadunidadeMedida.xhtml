@@ -10,18 +10,20 @@
         <h:form>
             <h1>Cadastro Unidade de Medida</h1>
             <br/>
-            <h:panelGrid columns="2">    
-                id:
-                <h:inputText id="iTextId" size="3" readonly="true" value="#{unidadeMedidaMbean.unidadeMedida.id}"/>
-                Unidade de M.
-                <h:inputText id="iTextCidade" size="15" value="#{unidadeMedidaMbean.unidadeMedida.nome}"/>
-                Sigla
-                <h:inputText id="iTextEstado" size="15" value="#{unidadeMedidaMbean.unidadeMedida.simbolo}"/>
+            <h:panelGrid columns="1">  
+                <h:panelGrid columns="1">
+                <h1>id:</h1>
+                <h:inputText id="iTextId" class="form-control" size="3" readonly="true" value="#{unidadeMedidaMbean.unidadeMedida.id}"/>
+                </h:panelGrid>
+                <h1>Unidade de M.</h1>
+                <h:inputText id="iTextCidade" class="form-control" size="15" value="#{unidadeMedidaMbean.unidadeMedida.nome}"/>
+                <h1>Sigla</h1>
+                <h:inputText id="iTextEstado" class="form-control" size="15" value="#{unidadeMedidaMbean.unidadeMedida.simbolo}"/>
                
             </h:panelGrid>
             <h:panelGrid columns="2">
-                <h:commandButton value="Salvar" action="#{unidadeMedidaMbean.botaoSalvar()}"/>
-                <h:commandButton value="Pesquisar" action="consUnidadeMedida?faces-redirect=true" />
+                <h:commandButton value="Salvar" class="btn btn-primary btn-sm" action="#{unidadeMedidaMbean.botaoSalvar()}"/>
+                <h:commandButton value="Pesquisar" class="btn btn-primary btn-sm" action="consUnidadeMedida?faces-redirect=true" />
             </h:panelGrid>
 
 

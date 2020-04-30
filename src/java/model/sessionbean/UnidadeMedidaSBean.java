@@ -20,7 +20,7 @@ import model.entidades.UnidadeMedida;
 @Stateless
 public class UnidadeMedidaSBean  {
 
-    @PersistenceContext(unitName = "sigePU")
+    @PersistenceContext(unitName = "Sige-bootstrapPU")
     private EntityManager em;
     
     public void salvar(UnidadeMedida unidadeMedida) {

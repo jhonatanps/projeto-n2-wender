@@ -21,7 +21,7 @@ import javax.persistence.Table;
  * @author Cirim
  */
 @Entity
-@Table(name = "cidade", schema = "sige")
+@Table(name = "cidade", schema = "sigebootstrap")
 @NamedQueries({
 @NamedQuery(
           name = "Cidade.findByNome",

@@ -47,6 +47,7 @@ public class UsuarioMBean implements Serializable {
 
     public void botaoExcluir() {
         usuarioSBean.excluir(usuario);
+        listaUsuario.remove(usuario);
     }
 
     public String botaoEditar() {

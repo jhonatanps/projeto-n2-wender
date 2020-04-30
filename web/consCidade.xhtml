@@ -11,12 +11,12 @@
         <h:form>
 
             <h:panelGrid>
-                <h:commandButton value="Nova Cidade" action="cadcidade?faces-redirect=true"/>
+                <h:commandButton value="Nova Cidade" class="btn btn-primary btn-sm" action="cadcidade?faces-redirect=true"/>
             </h:panelGrid>
             <h:panelGrid columns="3">                
-                Nome
+                <h1>Nome</h1>
                 <h:inputText size="20" value="#{cidadeMBean.valorPesquisar}"/>
-                <h:commandButton value="Pesquisar" action="#{cidadeMBean.botaoPesquisar()}"/>
+                <h:commandButton value="Pesquisar" class="btn btn-primary btn-sm" action="#{cidadeMBean.botaoPesquisar()}"/>
             </h:panelGrid>
 
             <h:panelGrid>
@@ -49,10 +49,10 @@
 
                     <h:column>
                          <f:facet name = "header">Ações</f:facet>
-                         <h:commandButton value="Editar" action="#{cidadeMBean.botaoEditar()}">
+                         <h:commandButton value="Editar" class="btn btn-primary btn-sm" action="#{cidadeMBean.botaoEditar()}">
                         <f:setPropertyActionListener value="#{cidade}" target="#{cidadeMBean.cidade}"/>
                         </h:commandButton>
-                         <h:commandButton value="Apagar" action="#{cidadeMBean.botaoExcluir()}">
+                         <h:commandButton value="Apagar" class="btn btn-primary btn-sm" action="#{cidadeMBean.botaoExcluir()}">
                         <f:setPropertyActionListener value="#{cidade}" target="#{cidadeMBean.cidade}"/>
                         </h:commandButton>
                     </h:column>

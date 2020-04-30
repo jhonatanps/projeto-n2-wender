@@ -11,12 +11,12 @@
         <h:form>
             
             <h:panelGrid>
-                <h:commandButton value="Novo Usuario" action="cadusuario?faces-redirect=true"/>
+                <h:commandButton value="Novo Usuario" class="btn btn-primary btn-sm" action="cadusuario?faces-redirect=true"/>
             </h:panelGrid>
             <h:panelGrid columns="3">                
-                Nome
+                <h1>Nome:</h1>
                 <h:inputText size="20" value="#{usuarioMBean.valorPesquisar}"/>
-                <h:commandButton value="Pesquisar" action="#{usuarioMBean.botaoPesquisar()}"/>
+                <h:commandButton value="Pesquisar" class="btn btn-primary btn-sm" action="#{usuarioMBean.botaoPesquisar()}"/>
             </h:panelGrid>
             
             <h:panelGrid>
@@ -25,7 +25,7 @@
                              styleClass = "tabela"
                              headerClass = "tabelacabecalho"
                              columnClasses="tabelaColunaId,tabelaColuna250px,tabelaColuna250px,tabelaColuna150px,tabelaColuna150px,tabelaColunaAcoes"
-                             rowClasses = "usuarioTableOddRow,usuarioTableEvenRow">
+                             rowClasses = "usuarioTableOddRow,usuarioTableEvenRow" >
                     
                     <h:column>    				
                         <f:facet name = "header">ID</f:facet>    				
@@ -53,10 +53,10 @@
                     </h:column>
                     <h:column>
                         <f:facet name = "header">Ações</f:facet>
-                        <h:commandButton value="Editar" action="#{usuarioMBean.botaoEditar()}">
+                        <h:commandButton value="Editar" class="btn btn-primary btn-sm" action="#{usuarioMBean.botaoEditar()}">
                         <f:setPropertyActionListener value="#{usuario}" target="#{usuarioMBean.usuario}"/>
                         </h:commandButton>
-                        <h:commandButton value="Apagar" action="#{usuarioMBean.botaoExcluir()}">
+                        <h:commandButton value="Apagar" class="btn btn-primary btn-sm" action="#{usuarioMBean.botaoExcluir()}">
                         <f:setPropertyActionListener value="#{usuario}" target="#{usuarioMBean.usuario}"/>
                         </h:commandButton>
                     </h:column>

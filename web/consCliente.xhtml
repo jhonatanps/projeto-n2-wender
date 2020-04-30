@@ -11,23 +11,23 @@
         <h:form>
 
             <h:panelGrid>
-                <h:commandButton value="Novo Cliente" action="#{clienteMBean.botaoNovo()}"/>
+                <h:commandButton value="Novo Cliente" class="btn btn-primary btn-sm" action="#{clienteMBean.botaoNovo()}"/>
             </h:panelGrid>
             <h:panelGrid columns="3">                
-                Nome:
+                <h1>Nome:</h1>
                 <h:inputText size="20" value="#{clienteMBean.valorPesquisar}"/>
-                <h:commandButton value="Pesquisar" action="#{clienteMBean.botaoPesquisar()}"/>
+                <h:commandButton value="Pesquisar" class="btn btn-primary btn-sm" action="#{clienteMBean.botaoPesquisar()}"/>
             </h:panelGrid>
 
             <h:panelGrid>
 
-                <h:dataTable value = "#{clienteMBean.listaCliente}" var = "cliente"
+                <h:dataTable value = "#{clienteMBean.listaCliente}" class="table-responsive" var = "cliente"
                              styleClass = "tabela"
                              headerClass = "tabelacabecalho"
                              columnClasses="tabelaColunaId, tabelaColuna250px,tabelaColuna100px,tabelaColuna100px,tabelaColuna150px,tabelaColuna100px,tabelaColuna150px,tabelaColuna250px,tabelaColuna100px,tabelaColuna150px,tabelaColuna150px,tabelaColuna150px"
                              rowClasses = "">
                     <h:column>    				
-                        <f:facet name = "header">ID</f:facet>    				
+                        <f:facet class="" name = "header">ID</f:facet>    				
                             #{cliente.id}
                     </h:column>
 
@@ -85,12 +85,14 @@
 
                     <h:column>
                         <f:facet name = "header">Ações</f:facet>
-                        <h:commandButton value="Editar" action="#{clienteMBean.botaoEditar()}">
+                        <h:panelGrid columns="2">
+                        <h:commandButton value="Editar" class="btn btn-primary btn-sm" action="#{clienteMBean.botaoEditar()}">
                             <f:setPropertyActionListener value="#{cliente}" target="#{clienteMBean.cliente}"/>
                         </h:commandButton>
-                        <h:commandButton value="Apagar" action="#{clienteMBean.botaoExcluir()}">
+                        <h:commandButton value="Apagar" class="btn btn-primary btn-sm" action="#{clienteMBean.botaoExcluir()}">
                             <f:setPropertyActionListener value="#{cliente}" target="#{clienteMBean.cliente}"/>
                         </h:commandButton>
+                        </h:panelGrid>
                     </h:column>
                 </h:dataTable>
             </h:panelGrid>

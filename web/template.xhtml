@@ -6,43 +6,50 @@
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <h:outputStylesheet name="/css/default.css"/>
+        <meta name="viewport" content="width=device-width, initial, shrink-to-fit=no"/>
+
+
+
+        <h:outputStylesheet name="/css/bootstrap.css"/>
         <h:outputStylesheet name="/css/cssLayout.css"/>
+        <h:outputStylesheet name="/css/default.css"/>
         <title>SIGR - Sistema de Gestão Empresarial</title>
     </h:head>
 
     <h:body>
-
-        <div id="top">
-            <ui:insert name="top">
-                <ui:include src="cabecalho.xhtml"/>
-            </ui:insert>
-        </div>
-        <div>
-
-            <div id="left">
-                <ui:insert name="left">
-                    <ui:include src="menu.xhtml"/>
+        <div class="container-fluid" id="container">
+            <div id="top">
+                <ui:insert name="top">
+                    <ui:include src="cabecalho.xhtml"/>             
                 </ui:insert>
             </div>
+            <div>
 
-            <div id="content" class="left_content">
-                <ui:insert name="content">
-                    Content
+                <div id="left">
+                    <ui:insert name="left">
+                        <ui:include src="menu.xhtml"/>
+                    </ui:insert>
+                </div>
+
+                <div id="content" class="left_content">
+                    <ui:insert name="content">
+                        Content
+                    </ui:insert>
+
+                </div>
+            </div>
+
+            <div>
+                <ui:insert name="bottom">
+                    <nav id="rodape" class="navbar navbar-dark bg-primary fixed-bottom text-white h3 justify-content-md-center ">
+                        
+                        <h4>Jhonatan</h4>                                
+                       
+
+                    </nav>
                 </ui:insert>
-
             </div>
         </div>
-
-        <div id="bottom">
-            <ui:insert name="bottom">
-                <center>
-                    Desenvolvido por: Jhonatan
-                </center>
-
-            </ui:insert>
-        </div>
-
     </h:body>
 
 </html>
