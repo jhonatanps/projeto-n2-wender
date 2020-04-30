@@ -9,8 +9,8 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
-import model.entidades.UnidadeMedida;
-import model.sessionbean.UnidadeMedidaSBean;
+import entidades.UnidadeMedida;
+import sessionbean.UnidadeMedidaSBean;
 
 /**
  *

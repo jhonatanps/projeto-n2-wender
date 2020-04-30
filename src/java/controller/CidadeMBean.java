@@ -12,8 +12,8 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
-import model.entidades.Cidade;
-import model.sessionbean.CidadeSBean;
+import entidades.Cidade;
+import sessionbean.CidadeSBean;
 
 
 /**

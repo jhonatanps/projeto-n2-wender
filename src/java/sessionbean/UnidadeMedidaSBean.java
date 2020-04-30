@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.sessionbean;
+package sessionbean;
 
 
 import java.util.List;
@@ -11,7 +11,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import model.entidades.UnidadeMedida;
+import entidades.UnidadeMedida;
 
 /**
  *

@@ -12,10 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import model.entidades.Cidade;
-import model.entidades.Cliente;
-import model.sessionbean.CidadeSBean;
-import model.sessionbean.ClienteSBean;
+import entidades.Cidade;
+import entidades.Cliente;
+import sessionbean.CidadeSBean;
+import sessionbean.ClienteSBean;
 import uteis.jsf.CidadeConverter;
 
 

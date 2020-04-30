@@ -22,9 +22,9 @@
             <h:panelGrid>
 
                 <h:dataTable value = "#{cidadeMBean.listaCidade}" var = "cidade"
-                             styleClass = "tabela"
+                              styleClass = "table-hover"
                              headerClass = "tabelacabecalho"
-                             columnClasses="tabelaColunaId, tabelaColuna250px,tabelaColuna100px,tabelaColuna100px,tabelaColuna150px,tabelaColuna100px,tabelaColuna150px,tabelaColuna250px,tabelaColuna100px,tabelaColuna150px,tabelaColuna150px,tabelaColuna150px"
+                             columnClasses="tabelaColunaId, tabelaColuna250px,tabelaColuna100px,tabelaColuna100px"
                              rowClasses = "">
                     <h:column>    				
                         <f:facet name = "header">ID</f:facet>    				
@@ -49,12 +49,14 @@
 
                     <h:column>
                          <f:facet name = "header">Ações</f:facet>
+                         <h:panelGrid columns="2">
                          <h:commandButton value="Editar" class="btn btn-primary btn-sm" action="#{cidadeMBean.botaoEditar()}">
                         <f:setPropertyActionListener value="#{cidade}" target="#{cidadeMBean.cidade}"/>
                         </h:commandButton>
                          <h:commandButton value="Apagar" class="btn btn-primary btn-sm" action="#{cidadeMBean.botaoExcluir()}">
                         <f:setPropertyActionListener value="#{cidade}" target="#{cidadeMBean.cidade}"/>
                         </h:commandButton>
+                         </h:panelGrid>
                     </h:column>
                 </h:dataTable>
             </h:panelGrid>

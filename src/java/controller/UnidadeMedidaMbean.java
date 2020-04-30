@@ -12,9 +12,9 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
-import model.entidades.UnidadeMedida;
+import entidades.UnidadeMedida;
 
-import model.sessionbean.UnidadeMedidaSBean;
+import sessionbean.UnidadeMedidaSBean;
 
 
 /**

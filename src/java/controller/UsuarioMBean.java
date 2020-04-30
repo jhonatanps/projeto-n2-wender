@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import model.entidades.Usuario;
-import model.sessionbean.UsuarioSBean;
+import entidades.Usuario;
+import sessionbean.UsuarioSBean;
 
 /**
  *

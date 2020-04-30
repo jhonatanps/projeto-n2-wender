@@ -12,10 +12,10 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
-import model.entidades.Produto;
-import model.entidades.UnidadeMedida;
-import model.sessionbean.ProdutoSBean;
-import model.sessionbean.UnidadeMedidaSBean;
+import entidades.Produto;
+import entidades.UnidadeMedida;
+import sessionbean.ProdutoSBean;
+import sessionbean.UnidadeMedidaSBean;
 import uteis.jsf.UnidadeMedidaConverter;
 
 

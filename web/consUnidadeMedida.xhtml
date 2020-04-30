@@ -22,7 +22,7 @@
             <h:panelGrid>
 
                 <h:dataTable value = "#{unidadeMedidaMbean.listaUnidadeMedidas}" var = "unidademedida"
-                             styleClass = "tabela"
+                             styleClass = "table-hover"
                              headerClass = "tabelacabecalho"
                              columnClasses="tabelaColunaId, tabelaColuna250px,tabelaColuna100px,tabelaColuna100px,tabelaColuna150px,tabelaColuna100px,tabelaColuna150px,tabelaColuna250px,tabelaColuna100px,tabelaColuna150px,tabelaColuna150px,tabelaColuna150px"
                              rowClasses = "">
@@ -47,12 +47,16 @@
                     <h:column>
                          <f:facet name = "header">Ações</f:facet>
                          <h:panelGrid columns="2">
-                         <h:commandButton value="Editar" class="btn btn-primary btn-sm" action="#{unidadeMedidaMbean.botaoEditar()}">
+                             
+                                 <h:commandButton value="Editar" class="btn btn-primary btn-sm" action="#{unidadeMedidaMbean.botaoEditar()}">
                              <f:setPropertyActionListener value="#{unidademedida}" target="#{unidadeMedidaMbean.unidadeMedida}"/>
                         </h:commandButton>
+                            
+                            
                          <h:commandButton value="Apagar" class="btn btn-primary btn-sm" action="#{unidadeMedidaMbean.botaoExcluir()}">
                              <f:setPropertyActionListener value="#{unidademedida}" target="#{unidadeMedidaMbean.unidadeMedida}"/>
                         </h:commandButton>
+                          
                          </h:panelGrid>
                     </h:column>
                 </h:dataTable>

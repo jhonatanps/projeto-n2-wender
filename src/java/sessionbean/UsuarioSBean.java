@@ -3,44 +3,43 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.sessionbean;
+package sessionbean;
 
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import model.entidades.Produto;
-
+import entidades.Usuario;
 
 /**
  *
  * @author Cirim
  */
 @Stateless
-public class ProdutoSBean {
+public class UsuarioSBean {
 
     @PersistenceContext(unitName = "Sige-bootstrapPU")
     EntityManager em;
     
-    public void salvar(Produto produto){
-       em.merge(produto); 
+    public void salvar(Usuario usuario){
+       em.merge(usuario); 
     }
     
-    public void excluir(Produto produto){
-        em.remove(em.find(Produto.class,produto.getId()));
+    public void excluir(Usuario usuario){
+        em.remove(em.find(Usuario.class,usuario.getId()));
     }
     
-    public Produto pesquisar(Long id){
-        return em.find(Produto.class, id);
+    public Usuario pesquisar(Long id){
+        return em.find(Usuario.class, id);
     }
     
-    public List<Produto> pesquisar(String nome){
-      List<Produto> listaProduto;
-      Query consulta = em.createNamedQuery("Produto.findByName");
+    public List<Usuario> pesquisar(String nome){
+      List<Usuario> listaUsuarios;
+      Query consulta = em.createNamedQuery("Usuario.findByNome");
       consulta.setParameter("nome", nome + "%");
-      listaProduto = consulta.getResultList();
-      return listaProduto;
+      listaUsuarios = consulta.getResultList();
+      return listaUsuarios;
     }
 
 }
