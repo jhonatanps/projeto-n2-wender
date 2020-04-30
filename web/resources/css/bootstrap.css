@@ -7971,11 +7971,12 @@ button.bg-dark:focus {
 }
 
 .fixed-bottom {
-  position: fixed;
+  position: absolute;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: 1030;
+  border-radius: 6px;
 }
 
 @supports ((position: -webkit-sticky) or (position: sticky)) {
