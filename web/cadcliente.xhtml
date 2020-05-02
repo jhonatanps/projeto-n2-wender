@@ -26,27 +26,37 @@
                     <h1>R.G</h1>
                     <h:inputText id="iTextRG"   class="form-control" size="15" value="#{clienteMBean.cliente.rg}"/>
                 </h:panelGrid>
-
-                <h1>Data de Naci.</h1>
+                
+                <h:panelGrid columns="1">
+                <h1>Data de Nascimento</h1>
                 <h:inputText id="iTextDatadeNacimento" class="form-control" size="10" value="#{clienteMBean.cliente.dataNacimento}">
                     <f:convertDateTime locale="pt_BR" parent="dd/MM/yyyy"/>
                 </h:inputText>
+                </h:panelGrid>
+                
+                
                 <h1>E-Mail</h1>
                 <h:inputText id="iTextEmail" class="form-control" size="50" value="#{clienteMBean.cliente.email}"/>
+                <h:panelGrid columns="1">
                 <h1>Telefone</h1>
                 <h:inputText id="iTextTelefone" class="form-control" size="15" value="#{clienteMBean.cliente.telefone}"/>
+                </h:panelGrid>
+                <h:panelGrid columns="1">
                 <h1>Cidade</h1>
                 <h:selectOneMenu id="sMnCidade" class="form-control" value="#{clienteMBean.cliente.cidade}" 
                                  converter="#{clienteMBean.cidadeConverter}">
                     <f:selectItems value="#{clienteMBean.listaCidade}" var="cidade"
                                    itemValue="#{cidade}" itemLabel="#{cidade.nomeCidade}"/>
                 </h:selectOneMenu>
+                </h:panelGrid>
+                <h:panelGrid columns="1">
                 <h1>Bairro</h1>
                 <h:inputText id="iTextBairro" class="form-control" size="15" value="#{clienteMBean.cliente.bairro}"/>
                 <h1>Numero</h1>
                 <h:inputText id="iTextNumero" class="form-control" size="15" value="#{clienteMBean.cliente.numero}"/>
                 <h1>Cep</h1>
                 <h:inputText id="iTextCep" class="form-control" size="15" value="#{clienteMBean.cliente.cep}"/>
+                </h:panelGrid>
 
 
 
