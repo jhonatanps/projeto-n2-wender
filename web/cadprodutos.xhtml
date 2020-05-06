@@ -27,14 +27,22 @@
                 </h:panelGrid>
                 <h:panelGrid columns="1">    
                     <h1> Quantidade Est.</h1>
-                <h:inputText id="iTextQtdeest" size="5" class="form-control" value="#{produtoMBean.produto.qtdeEstoque}"/>
+                    <h:inputText id="iTextQtdeest" size="5" class="form-control" value="#{produtoMBean.produto.qtdeEstoque}">
+                    <f:convertNumber pattern="#,##0.000" locale="pt_BR"/>
+                    </h:inputText>
 
                 <h1>Preço de comp.</h1>
-                <h:inputText id="iTextPdecompra"  size="5" class="form-control" value="#{produtoMBean.produto.precoCompra}"/>
+                <h:inputText id="iTextPdecompra"  size="5" class="form-control" value="#{produtoMBean.produto.precoCompra}">
+                <f:convertNumber pattern="#,##0.00" locale="pt_BR"/>
+                </h:inputText>
                 <h1>Preço de venda.</h1>
-                <h:inputText id="iTextPdevenda"  size="5"  class="form-control" value="#{produtoMBean.produto.precoVenda}"/>
+                <h:inputText id="iTextPdevenda"  size="5"  class="form-control" value="#{produtoMBean.produto.precoVenda}">
+                <f:convertNumber pattern="#,##0.00" locale="pt_BR"/>
+                </h:inputText>
                 <h1>Margem %</h1>
-                <h:inputText id="iTextMargem" size="10" class="form-control"  value="#{produtoMBean.produto.margem}"/>
+                <h:inputText id="iTextMargem" size="10" class="form-control"  value="#{produtoMBean.produto.margem}">
+                <f:convertNumber pattern="#,##0.00" locale="pt_BR"/>
+                </h:inputText>
                 <h1>Codigo de barras</h1>
                 <h:inputText id="iTextCodigodebarras"  class="form-control" size="15" value="#{produtoMBean.produto.codBarras}"/>
                 </h:panelGrid>

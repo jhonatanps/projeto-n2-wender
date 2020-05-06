@@ -14,7 +14,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -75,7 +74,7 @@ public class Cliente implements Serializable{
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        this.nome = nome.toUpperCase();
     }
 
     public String getCpf() {
@@ -123,7 +122,7 @@ public class Cliente implements Serializable{
     }
 
     public void setBairro(String bairro) {
-        this.bairro = bairro;
+        this.bairro = bairro.toUpperCase();
     }
 
     public String getNumero() {

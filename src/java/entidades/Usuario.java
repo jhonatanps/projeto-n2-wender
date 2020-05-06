@@ -62,7 +62,7 @@ public class Usuario implements Serializable{
     }
 
     public void setEmail(String email) {
-        this.email = email.toLowerCase();
+        this.email = email;
     }
 
     public String getUserName() {

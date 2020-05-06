@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./template.xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
-                
+
         <h:form>
-            
+
             <h:panelGrid>
                 <h:commandButton value="Novo Produto" class="btn btn-primary btn-sm" action="#{produtoMBean.botaoNovo()}"/>
             </h:panelGrid>
@@ -18,7 +18,7 @@
                 <h:inputText size="20" value="#{produtoMBean.valorPesquisar}"/>
                 <h:commandButton value="Pesquisar" class="btn btn-primary btn-sm" action="#{produtoMBean.botaoPesquisar}"/>
             </h:panelGrid>
-            
+
             <h:panelGrid>
 
                 <h:dataTable value = "#{produtoMBean.listaProduto}" var = "produto"
@@ -43,43 +43,51 @@
 
                     <h:column>
                         <f:facet name = "header">Q. Estoque</f:facet>
-                            #{produto.qtdeEstoque}
+                        <h:outputText value="#{produto.qtdeEstoque}">
+                            <f:convertNumber pattern="#,##0.000" locale="pt_BR"/>   
+                        </h:outputText>
                     </h:column>
-                    
+
                     <h:column>
                         <f:facet name = "header">p. Compra</f:facet>
-                            #{produto.precoCompra}
+                        <h:outputText value="#{produto.precoCompra}">
+                            <f:convertNumber pattern="#,##0.00" locale="pt_BR"/>  
+                        </h:outputText>
                     </h:column>
-                    
+
                     <h:column>
                         <f:facet name = "header">p. Venda</f:facet>
-                            #{produto.precoVenda}
+                        <h:outputText  value="#{produto.precoVenda}">
+                            <f:convertNumber pattern="#,##0.00" locale="pt_BR"/>  
+                        </h:outputText>
                     </h:column>
-                    
-                      <h:column>
+
+                    <h:column>
                         <f:facet name = "header">Margem</f:facet>
-                            #{produto.margem}
+                        <h:outputText value="#{produto.margem}">
+                            <f:convertNumber pattern="#0.000" locale="pt_BR"/>  
+                        </h:outputText>
                     </h:column>
-                    
-                     <h:column>
+
+                    <h:column>
                         <f:facet name = "header">Cod. Barras</f:facet>
                             #{produto.codBarras}
                     </h:column>
                     <h:column>
                         <f:facet name = "header">Ações</f:facet>
                         <h:panelGrid columns="2">
-                        <h:commandButton value="Editar" class="btn btn-primary btn-sm" action="#{produtoMBean.botaoEditar()}">
-                            <f:setPropertyActionListener value="#{produto}" target="#{produtoMBean.produto}"/>
-                        </h:commandButton>
-                        <h:commandButton value="Apagar" class="btn btn-primary btn-sm" action="#{produtoMBean.botaoExcluir()}">
-                            <f:setPropertyActionListener value="#{produto}" target="#{produtoMBean.produto}"/>
-                        </h:commandButton>
+                            <h:commandButton value="Editar" class="btn btn-primary btn-sm" action="#{produtoMBean.botaoEditar()}">
+                                <f:setPropertyActionListener value="#{produto}" target="#{produtoMBean.produto}"/>
+                            </h:commandButton>
+                            <h:commandButton value="Apagar" class="btn btn-primary btn-sm" action="#{produtoMBean.botaoExcluir()}">
+                                <f:setPropertyActionListener value="#{produto}" target="#{produtoMBean.produto}"/>
+                            </h:commandButton>
                         </h:panelGrid>
                     </h:column>
                 </h:dataTable>
             </h:panelGrid>
-            
+
         </h:form>
-      </ui:define>
+    </ui:define>
 
 </ui:composition>

@@ -17,21 +17,26 @@
     </h:head>
 
     <h:body>
-        <div class="container-fluid" id="container">
-            <div id="top">
-                <ui:insert name="top">
-                    <ui:include src="cabecalho.xhtml"/>             
-                </ui:insert>
+        <div class="container-fluid">
+            <div class="row" >
+                <div class="col-md-12">
+                    <ui:insert name="top">
+                        <ui:include src="cabecalho.xhtml"/>             
+                    </ui:insert>
+                </div>
             </div>
-            <div>
 
-                <div id="left">
+
+            <div class="row">
+                <div id="left" class="col-md-2">
                     <ui:insert name="left">
                         <ui:include src="menu.xhtml"/>
                     </ui:insert>
                 </div>
 
-                <div id="content" class="left_content">
+
+                
+                <div class="left_content col-md-10">
                     <ui:insert name="content">
                         Content
                     </ui:insert>
@@ -39,22 +44,20 @@
                 </div>
             </div>
 
-            <div>
-                <ui:insert name="bottom">
-                    <ui:include src="rodape.xhtml"/>
-                        
-                        
-                        
-                             
-                        
 
+            <div class="row">
+                <div class="col-md-12">
 
-                        
+                    <ui:insert name="bottom">
+                        <ui:include src="rodape.xhtml"/>
 
-                   
-                </ui:insert>
+                    </ui:insert>
+                </div>
             </div>
+
         </div>
+
+
     </h:body>
 
 </html>

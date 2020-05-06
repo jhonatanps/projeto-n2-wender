@@ -65,7 +65,7 @@ public class Cidade implements Serializable{
     }
 
     public void setNomeCidade(String nomeCidade) {
-        this.nomeCidade = nomeCidade;
+        this.nomeCidade = nomeCidade.toUpperCase();
     }
 
     public String getEstado() {
@@ -73,7 +73,7 @@ public class Cidade implements Serializable{
     }
 
     public void setEstado(String estado) {
-        this.estado = estado;
+        this.estado = estado.toUpperCase();
     }
 
     @Override

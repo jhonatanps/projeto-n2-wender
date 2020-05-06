@@ -51,7 +51,7 @@ public class UnidadeMedida implements Serializable {
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        this.nome = nome.toUpperCase();
     }
 
     public String getSimbolo() {
@@ -59,7 +59,7 @@ public class UnidadeMedida implements Serializable {
     }
 
     public void setSimbolo(String simbolo) {
-        this.simbolo = simbolo;
+        this.simbolo = simbolo.toUpperCase();
     }
     
 
