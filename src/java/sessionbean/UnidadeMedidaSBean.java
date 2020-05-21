@@ -23,8 +23,12 @@ public class UnidadeMedidaSBean  {
     @PersistenceContext(unitName = "Sige-bootstrapPU")
     private EntityManager em;
     
-    public void salvar(UnidadeMedida unidadeMedida) {
-        em.merge(unidadeMedida);
+    public void salvar(UnidadeMedida unidadeMedida) throws Exception {
+        try{
+         em.merge(unidadeMedida);   
+        } catch (Exception ex){
+        throw new Exception("Error ao Salvar Unidade de Medida");
+    }
     }
     
     public void excluir(UnidadeMedida unidadeMedida) {

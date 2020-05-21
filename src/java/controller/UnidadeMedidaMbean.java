@@ -15,6 +15,7 @@ import javax.enterprise.context.SessionScoped;
 import entidades.UnidadeMedida;
 
 import sessionbean.UnidadeMedidaSBean;
+import uteis.jsf.UteisJsf;
 
 
 /**
@@ -51,9 +52,18 @@ public class UnidadeMedidaMbean implements Serializable {
         listaUnidadeMedidas = unidadeMedidaSBean.pesquisar(valorPesquisar);
     }
 
-    public String botaoSalvar() {
+    public void botaoSalvar() {
+        try{
         unidadeMedidaSBean.salvar(unidadeMedida);
         unidadeMedida = new UnidadeMedida();
+        UteisJsf.addMensagemInfo("Salvar:", "Unidade de Medida salva com sucesso.");
+       // return "consUnidadeMedida?faces-redirect=true";
+        }catch(Exception ex){
+            UteisJsf.addMensagemErro("Erro ao Salvar", ex.getMessage());
+        }
+    }
+    
+    public String botaoNavPesquisar(){
         return "consUnidadeMedida?faces-redirect=true";
     }
 

@@ -48,9 +48,11 @@ public class Cliente implements Serializable{
     private String email;
     @Column(name = "telefone", length = 20)
     private String telefone;
+    
     @ManyToOne
     @JoinColumn(name = "nome_cidade_id", referencedColumnName = "id" )
     private Cidade cidade;
+    
     @Column(name = "bairro", length = 50)
     private String bairro;
     @Column(name = "numero", length = 10)

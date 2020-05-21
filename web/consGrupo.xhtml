@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+
+        <h:form>
+
+            <h:panelGrid>
+                <h:commandButton value="Novo Grupo" class="btn btn-primary btn-sm" action="cadgrupo?faces-redirect=true"/>
+            </h:panelGrid>
+            <h:panelGrid columns="3">                
+                <h1>Nome</h1>
+                <h:inputText size="20" value="#{grupoMBean.valorPesquisar}"/>
+                <h:commandButton value="Pesquisar" class="btn btn-primary btn-sm" action="#{grupoMBean.botaoPesquisar()}"/>
+            </h:panelGrid>
+
+            <h:panelGrid>
+
+                <h:dataTable value = "#{grupoMBean.listaGrupo}" var = "grupo"
+                              styleClass = "table-hover"
+                             headerClass = "tabelacabecalho"
+                             columnClasses="tabelaColunaId, tabelaColuna250px,tabelaColuna100px,tabelaColuna100px"
+                             rowClasses = "">
+                    <h:column>    				
+                        <f:facet name = "header">ID</f:facet>    				
+                            #{grupo.id}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name = "header">Grupo</f:facet>
+                            #{grupo.nome}
+                    </h:column>
+
+                  
+                        
+                    <h:column>
+                         <f:facet name = "header">Ações</f:facet>
+                         <h:panelGrid columns="2">
+                             <h:commandButton value="Editar" class="btn btn-primary btn-sm" action="#{grupoMBean.botaoEditar()}">
+                                 <f:setPropertyActionListener value="#{grupo}" target="#{grupoMBean.grupo}"/>
+                        </h:commandButton>
+                         <h:commandButton value="Apagar" class="btn btn-primary btn-sm" action="#{grupoMBean.botaoExcluir()}">
+                             <f:setPropertyActionListener value="#{grupo}" target="#{grupoMBean.grupo}"/>
+                        </h:commandButton>
+                         </h:panelGrid>
+                    </h:column>
+                </h:dataTable>
+            </h:panelGrid>
+
+        </h:form>
+    </ui:define>
+
+</ui:composition>

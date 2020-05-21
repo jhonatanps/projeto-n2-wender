@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns="http://www.w3.org/1999/xhtml">
+
+    <ui:define name="content">
+        <h:form>
+            <h1>Cadastro de Fornecedor</h1>
+            <br/>
+            <h:messages/>
+            <h:panelGrid columns="1"> 
+                <h:panelGrid>
+                    <h1>ID:</h1>
+                    <h:inputText id="iTextId" size="3"  class="form-control" readonly="true" value="#{fornecedorMBean.fornecedor.id}"/>
+                </h:panelGrid>
+                <h:panelGrid>
+                    <h1>Nome</h1>
+                    <h:inputText id="iTextNome" class="form-control" size="50" value="#{fornecedorMBean.fornecedor.nome}" />
+                </h:panelGrid>
+                <h:panelGrid>
+                    <h1>CNPJ</h1>
+                    <h:inputText id="iTextCpf"  class="form-control" size="15" value="#{fornecedorMBean.fornecedor.cnpj}"/>
+                </h:panelGrid>
+                <h:panelGrid>
+                    <h1>E-Mail</h1>
+                    <h:inputText id="iTextEmail" class="form-control" size="50" value="#{clienteMBean.cliente.email}"/>
+                </h:panelGrid>
+                <h:panelGrid columns="1">
+                    <h1>Telefone</h1>
+                    <h:inputText id="iTextTelefone" class="form-control" size="15" value="#{clienteMBean.cliente.telefone}"/>
+                </h:panelGrid>
+
+
+            </h:panelGrid>
+            <h:panelGrid columns="2">
+                <h:commandButton value="Salvar" class="btn btn-primary btn-sm" action="#{fornecedorMBean.botaoSalvar()}"/>
+                <h:commandButton value="Pesquisar" class="btn btn-primary btn-sm" action="consFornecedor?faces-redirect=true" />
+            </h:panelGrid>
+
+
+
+
+
+
+
+        </h:form>
+    </ui:define>
+
+</ui:composition>

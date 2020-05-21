@@ -55,7 +55,7 @@ public class UsuarioMBean implements Serializable {
         return "cadusuario?faces-redirect=true";
     }
 
-    public String botaoSalvar() {
+    public String botaoSalvar() throws Exception{
         usuarioSBean.salvar(usuario);
         usuario = new Usuario();
         return "consUsuario?faces-redirect=true";

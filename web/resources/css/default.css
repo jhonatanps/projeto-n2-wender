@@ -27,3 +27,14 @@ a:link:hover, a:visited:hover  {
   font-weight : bold;
   text-decoration : underline;
 }
+
+.msgErro{
+    color: red;
+    font: 14px Arial, sans-serif;
+    font-weight: bold;
+}
+.msgInfo{
+  color: blue;
+    font: 14px Arial, sans-serif;
+    font-weight: bold;  
+}

@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+
+        <h:form>
+
+            <h:panelGrid>
+                <h:commandButton value="Novo Fornecedor" class="btn btn-primary btn-sm" action="#{fornecedorMBean.botaoNovo()}"/>
+            </h:panelGrid>
+            <h:panelGrid columns="3">                
+                <h1>Nome:</h1>
+                <h:inputText size="20" value="#{fornecedorMBean.valorPesquisar}"/>
+                <h:commandButton value="Pesquisar" class="btn btn-primary btn-sm" action="#{fornecedorMBean.botaoPesquisar()}"/>
+            </h:panelGrid>
+
+            <h:panelGrid>
+
+                <h:dataTable value = "#{fornecedorMBean.listaFornecedor}" class="table-responsive" var = "fornecedor"
+                             styleClass = "table-hover"
+                             headerClass = "tabelacabecalho"
+                             columnClasses="tabelaColunaId"
+                             rowClasses = "">
+                    <h:column>    				
+                        <f:facet class="" name = "header">ID</f:facet>    				
+                            #{fornecedor.id}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name = "header">Nome</f:facet>
+                            #{fornecedor.nome}
+                    </h:column>
+
+
+                    <h:column>
+                        <f:facet name = "header">CNPJ</f:facet>
+                            #{fornecedor.cnpj}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name = "header">Email</f:facet>
+                            #{fornecedor.email}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name = "header">Telefone</f:facet>
+                            #{fornecedor.telefone}
+                    </h:column>
+
+
+                    <h:column>
+                        <f:facet name = "header">Ações</f:facet>
+                        <h:panelGrid columns="2">
+                            <h:commandButton value="Editar" class="btn btn-primary btn-sm" action="#{fornecedorMBean.botaoEditar()}">
+                                <f:setPropertyActionListener value="#{fornecedor}" target="#{fornecedorMBean.fornecedor}"/>
+                            </h:commandButton>
+                            <h:commandButton value="Apagar" class="btn btn-primary btn-sm" action="#{fornecedorMBean.botaoExcluir()}">
+                                <f:setPropertyActionListener value="#{fornecedor}" target="#{fornecedorMBean.fornecedor}"/>
+                            </h:commandButton>
+                        </h:panelGrid>
+                    </h:column>
+                </h:dataTable>
+            </h:panelGrid>
+
+        </h:form>
+    </ui:define>
+
+</ui:composition>

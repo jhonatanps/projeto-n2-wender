@@ -8,23 +8,22 @@
 
     <ui:define name="content">
         <h:form>
-            <h1>Cadastro Unidade de Medida</h1>
+            <h1>Cadastro Grupo</h1>
             <h:messages showSummary="true" showDetail="true" errorClass="msgErro" infoClass="msgInfo" />
             <br/>
             <h:panelGrid columns="1">  
                 <h:panelGrid columns="1">
                 <h1>id:</h1>
-                <h:inputText id="iTextId" class="form-control" size="3" readonly="true" value="#{unidadeMedidaMbean.unidadeMedida.id}"/>
+                <h:inputText id="iTextId" class="form-control" size="3" readonly="true" value="#{grupoMBean.grupo.id}"/>
                 </h:panelGrid>
-                <h1>Unidade de M.</h1>
-                <h:inputText id="iTextCidade" class="form-control" size="15" value="#{unidadeMedidaMbean.unidadeMedida.nome}"/>
-                <h1>Sigla</h1>
-                <h:inputText id="iTextEstado" class="form-control" size="15" value="#{unidadeMedidaMbean.unidadeMedida.simbolo}"/>
+                <h1>Nome do Grupo</h1>
+                <h:inputText id="iTextCidade" class="form-control" size="15" value="#{grupoMBean.grupo.nome}"/>
+               
                
             </h:panelGrid>
             <h:panelGrid columns="2">
-                <h:commandButton value="Salvar" class="btn btn-primary btn-sm" action="#{unidadeMedidaMbean.botaoSalvar()}"/>
-                <h:commandButton value="Pesquisar" class="btn btn-primary btn-sm" action="#{unidadeMedidaMbean.botaoNavPesquisar()}" />
+                <h:commandButton value="Salvar" class="btn btn-primary btn-sm" action="#{grupoMBean.botaoSalvar()}"/>
+                <h:commandButton value="Pesquisar" class="btn btn-primary btn-sm" action="consGrupo?faces-redirect=true" />
             </h:panelGrid>
 
 

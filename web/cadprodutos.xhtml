@@ -24,6 +24,11 @@
                     <f:selectItems value="#{produtoMBean.listaUnidadeMedida}" var="unidadeMedida"
                                    itemValue="#{unidadeMedida}" itemLabel="#{unidadeMedida.nome}"/>
                 </h:selectOneMenu>
+                <h1>Grupo</h1>
+                 <h:selectOneMenu id="sMnGrupo" class="form-control" value="#{produtoMBean.produto.grupo}" converter="#{produtoMBean.grupoConverter}">
+                    <f:selectItems value="#{produtoMBean.listaGrupo}" var="grupo"
+                                   itemValue="#{grupo}" itemLabel="#{grupo.nome}"/>
+                </h:selectOneMenu>
                 </h:panelGrid>
                 <h:panelGrid columns="1">    
                     <h1> Quantidade Est.</h1>

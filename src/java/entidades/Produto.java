@@ -37,6 +37,9 @@ public class Produto implements Serializable{
     @ManyToOne
     @JoinColumn(name = "unidade_Medida_id", referencedColumnName = "id")
     private UnidadeMedida unidadeMedida;
+    @ManyToOne
+    @JoinColumn(name = "grupo_id", referencedColumnName = "id")
+    private Grupo grupo;
     @Column(name = "qtdeEstoque")
     private int qtdeEstoque;
     @Column(name = "precoCompra")
@@ -114,6 +117,16 @@ public class Produto implements Serializable{
     public void setCodBarras(int codBarras) {
         this.codBarras = codBarras;
     }
+
+    public Grupo getGrupo() {
+        return grupo;
+    }
+
+    public void setGrupo(Grupo grupo) {
+        this.grupo = grupo;
+    }
+    
+    
 
     @Override
     public int hashCode() {
