@@ -16,12 +16,17 @@
             <h:panelGrid columns="3">                
                 <h1> Nome</h1>
                 <h:inputText size="20" value="#{produtoMBean.valorPesquisar}"/>
-                <h:commandButton value="Pesquisar" class="btn btn-primary btn-sm" action="#{produtoMBean.botaoPesquisar}"/>
+                
+                <f:ajax listener="#{produtoMBean.botaoPesquisar()}" execute="iTxtValorPesquisar" render="dtproduto" event="keyup"/>
+                
+                <h:commandButton value="Pesquisar" class="btn btn-primary btn-sm" action="#{produtoMBean.botaoPesquisar()}" />
+                
+                
             </h:panelGrid>
 
             <h:panelGrid>
 
-                <h:dataTable value = "#{produtoMBean.listaProduto}" var = "produto"
+                <h:dataTable id="dtproduto" value = "#{produtoMBean.listaProduto}" var = "produto"
                              styleClass = "table-hover"
                              headerClass = "tabelacabecalho"
                              columnClasses="tabelaColunaId"

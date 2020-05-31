@@ -610,8 +610,8 @@ pre code {
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin-right: 0px;
-  margin-left: 0px;
+  margin-right: -15px;
+  margin-left: -15px;
 }
 
 .no-gutters {
@@ -7971,12 +7971,11 @@ button.bg-dark:focus {
 }
 
 .fixed-bottom {
-  position: absolute;
+  position: fixed;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: 1030;
-  border-radius: 6px;
 }
 
 @supports ((position: -webkit-sticky) or (position: sticky)) {

@@ -44,8 +44,8 @@ public class FornecedorMBean implements Serializable {
   
     
     @PostConstruct
-    public void init() {
-        this.inicioFormularioCadastro();
+    public void init(){
+        inicioFormularioCadastro();
         valorPesquisar = "";
         this.fornecedor = new Fornecedor();
         this.listaFornecedor = new ArrayList<>();
@@ -55,7 +55,7 @@ public class FornecedorMBean implements Serializable {
         listaFornecedor = fornecedorSBean.pesquisar("");
             
     }
-     public String botaoNovo(){
+     public String botaoNovo() {
         inicioFormularioCadastro();
         return "cadfornecedor?faces-redirect=true";
     }

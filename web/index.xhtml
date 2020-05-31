@@ -3,40 +3,44 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="viewport" content="width=device-width, initial, shrink-to-fit=no"/>
         <title>SIGE 1.0</title>
-       
         <h:outputStylesheet name="/css/bootstrap.css"/>
         <h:outputStylesheet name="/css/cssLayout.css"/>
         <h:outputStylesheet name="/css/default.css"/>
     </h:head>
     <h:body>
-        <div class="jumbotron">
-                <h:form>
-                    
-                    <center>
-                        <h4 class="display-4">Sistema SIGE</h4>
-                        <h3 class="display-8">Informe o nome de usuario e senha.</h3>
-                        <hr class="my4"></hr>
-                        <h:panelGrid columns="2">
-                            <h:outputLabel class="badge badge-primary" for="iTxtUserName"><h1>Loguin:</h1></h:outputLabel>
-                            <h:inputText id="iTxtUserName" maxlength="10" size="10" value="#{loginMBean.userName}" />
-                            <h:outputLabel class="badge badge-primary" for="iSecrSenha"><h1>Senha:</h1></h:outputLabel>
-                            <h:inputSecret id="iSecrSenha" maxlength="10" size="10" value="#{loginMBean.senha}" />
-                        </h:panelGrid>
-                        <br/>
-                        <h:commandButton class="btn btn-primary btn-lg" value="Entrar" action="#{loginMBean.logar()}"/>
-                        <br/>
-                        <hr class="my4"></hr>
-                        <h:messages style="color: red"/>
-                    </center>
-                </h:form>
-                
-        </div>  
-   
+        
+        <center>         
+            <hr></hr>
+        <h1>Informe o nome de usuario e senha.</h1>
+        <hr></hr>
+        </center>
+        
+        <h:form>        
+            <center>
+                <h:panelGrid columns="2">
+                    <h:outputLabel for="iTxtUserName" value="Usuario:"/>
+                    <h:panelGroup>
+                        <h:inputText id="iTxtUserName" maxlength="10" size="10" value="#{loginMBean.userName}" />
+                        <h:message for="iTxtUserName"/>
+                    </h:panelGroup>
+                    <h:outputLabel for="iSecrSenha" value="Senha:"/>
+                    <h:panelGroup>
+                        <h:inputSecret id="iSecrSenha" maxlength="10" size="10" value="#{loginMBean.senha}" />
+
+                    </h:panelGroup>
+                </h:panelGrid>
+                <br/>
+                <h:commandButton value="Entrar" action="#{loginMBean.logar()}"/>
+                <br/>
+                <h:messages style="color: red" />
+            </center>
+        </h:form>
 
 
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     </h:body>
 </html>
 

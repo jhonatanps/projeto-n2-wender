@@ -6,6 +6,8 @@
 package entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -25,6 +28,9 @@ import javax.persistence.Table;
     @NamedQuery(
             name = "Produto.findByName",
             query = "SELECT p FROM Produto p WHERE p.nome LIKE :nome"
+),@NamedQuery(
+            name = "Produto.findByGrupo",
+            query = "SELECT p FROM Produto p WHERE p.grupo LIKE :grupo"
 )
 })
 public class Produto implements Serializable{
@@ -50,9 +56,17 @@ public class Produto implements Serializable{
     private double margem;
     @Column(name = "codBarras")
     private int codBarras;
-
+    @ManyToMany
+    private List<Fornecedor> listaFornecedores;
+    
+    
+    
+    
     public Produto() {
+        this.listaFornecedores = new ArrayList<>();
     }
+    
+    
 
     public Long getId() {
         return id;
@@ -124,6 +138,14 @@ public class Produto implements Serializable{
 
     public void setGrupo(Grupo grupo) {
         this.grupo = grupo;
+    }
+
+    public List<Fornecedor> getListaFornecedores() {
+        return listaFornecedores;
+    }
+
+    public void setListaFornecedores(List<Fornecedor> listaFornecedores) {
+        this.listaFornecedores = listaFornecedores;
     }
     
     

@@ -16,12 +16,13 @@
             <h:panelGrid columns="3">                
                 <h1>Nome:</h1>
                 <h:inputText size="20" value="#{usuarioMBean.valorPesquisar}"/>
-                <h:commandButton value="Pesquisar" class="btn btn-primary btn-sm" action="#{usuarioMBean.botaoPesquisar()}"/>
+                <f:ajax listener="#{usuarioMBean.botaoPesquisar()}" execute="iTxtValorPesquisar" render="dtuser" event="keyup"/>
+                <h:commandButton value="Pesquisar" class="btn btn-primary btn-sm" action="#{usuarioMBean.botaoPesquisar()}" />
             </h:panelGrid>
             
             <h:panelGrid>
 
-                <h:dataTable value = "#{usuarioMBean.listaUsuario}" var = "usuario"
+                <h:dataTable id="dtuser" value = "#{usuarioMBean.listaUsuario}" var = "usuario"
                              styleClass = "table-hover"
                              headerClass = "tabelacabecalho"
                              columnClasses="tabelaColunaId"
@@ -47,10 +48,7 @@
                             #{usuario.userName}
                     </h:column>
 
-                    <h:column>
-                        <f:facet name = "header">Senha</f:facet>
-                            #{usuario.senha}
-                    </h:column>
+                    
                     <h:column>
                         <f:facet name = "header">Ações</f:facet>
                         <h:panelGrid columns="2">
@@ -62,6 +60,7 @@
                         </h:commandButton>
                         </h:panelGrid>
                     </h:column>
+                
                 </h:dataTable>
             </h:panelGrid>
             

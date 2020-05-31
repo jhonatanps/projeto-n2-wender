@@ -10,9 +10,7 @@ import entidades.Usuario;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
-import sessionbean.UsuarioSBean;
 import uteis.jsf.UteisJsf;
 
 /**
@@ -55,7 +53,7 @@ public class LoginMBean implements Serializable{
     
     public String sair() {
         UteisJsf.removeObjectSession("usuarioLogado");        
-        return "login";
+        return "index";
     }
 
     public String getUserName() {

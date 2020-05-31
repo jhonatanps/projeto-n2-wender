@@ -5,6 +5,7 @@
  */
 package sessionbean;
 
+import entidades.Grupo;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -39,6 +40,14 @@ public class ProdutoSBean {
       List<Produto> listaProduto;
       Query consulta = em.createNamedQuery("Produto.findByName");
       consulta.setParameter("nome", nome + "%");
+      listaProduto = consulta.getResultList();
+      return listaProduto;
+    }
+    
+    public List<Produto> pesquisar(Grupo grupo){
+      List<Produto> listaProduto;
+      Query consulta = em.createNamedQuery("Produto.findByGrupo");
+      consulta.setParameter("grupo", grupo + "%");
       listaProduto = consulta.getResultList();
       return listaProduto;
     }

@@ -23,8 +23,11 @@ import javax.persistence.Table;
     @NamedQuery(
             name = "Fornecedor.findByName",
             query = "SELECT f FROM Fornecedor f WHERE f.nome LIKE :nome"
+    ),
+    @NamedQuery(
+            name = "Fornecedor.findByCnpj",
+            query = "SELECT f FROM Fornecedor f WHERE f.cnpj LIKE :cnpj"
     )
-  
 })
 public class Fornecedor implements Serializable{
     

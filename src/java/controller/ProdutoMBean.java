@@ -34,7 +34,6 @@ public class ProdutoMBean implements Serializable {
     private ProdutoSBean produtoSBean;
     @EJB
     private UnidadeMedidaSBean unidadeMedidaSBean;
-    
     @EJB
     private GrupoSBean grupoSBean;
 

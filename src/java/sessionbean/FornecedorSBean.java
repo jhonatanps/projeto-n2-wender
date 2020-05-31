@@ -23,24 +23,28 @@ public class FornecedorSBean {
     @PersistenceContext(unitName = "Sige-bootstrapPU")
     EntityManager em;
     
-    public void salvar(Fornecedor fornecedor){
+    public void salvar(Fornecedor fornecedor){    
        em.merge(fornecedor); 
     }
     
-    public void excluir(Fornecedor fornecedor){
+    public void excluir(Fornecedor fornecedor) {
         em.remove(em.find(Fornecedor.class,fornecedor.getId()));
     }
     
-    public Fornecedor pesquisar(Long id){
-        return em.find(Fornecedor.class, id);
+    public Fornecedor pesquisarPorCnpj(String cnpj)  {
+       
+        Query consulta = em.createNamedQuery("Fornecedor.findByCnpj");
+        consulta.setParameter("cnpj", cnpj);
+        return (Fornecedor)consulta.getSingleResult();
+        
     }
     
-    public List<Fornecedor> pesquisar(String nome){
-      List<Fornecedor> listaFornecedor;
-      Query consulta = em.createNamedQuery("Fornecedor.findByName");
-      consulta.setParameter("nome", nome + "%");
-      listaFornecedor = consulta.getResultList();
-      return listaFornecedor;
+    public List<Fornecedor> pesquisar(String nome) {
+       
+       Query consulta = em.createNamedQuery("Fornecedor.findByName");
+        consulta.setParameter("nome", nome + "%");
+        return consulta.getResultList();
+       
     }
 
 }

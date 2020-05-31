@@ -18,11 +18,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-/**
- *
- * @author wender
- */
-public class LoginFilter implements Filter {
+
+ 
+public class LoginFilter implements Filter {;
 
     private final static String FILTER_APPLIED = "_security_filter_applied";
 
